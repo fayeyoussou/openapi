@@ -1,25 +1,23 @@
 openapi: "3.0.0"
 
 info:
-  title: Administration App Roles
+  title: Administration App User
   version: "1.0.0"
-  description: AppRole part of Adminstration app API
+  description: AppUser part of Adminstration app API
 
 servers:
   - url: http://localhost:8080/
 
 tags:
-  - name: AppRole
-    description: Approle specific data.
+  - name: AppUser
+    description: appuser specific data.
 paths:
-  /role:
+  /user:
     get:
       tags:
-        - AppRole
-        - listAppRole
-        - Gets
-      summary: Get All AppRoles
-      operationId: getRoles
+        - AppUser
+      summary: Get All AppUsers
+      operationId: getUsers
       responses:
         '200':
           description: SUCCESS
@@ -28,26 +26,31 @@ paths:
               schema:
                 type: array  # Return a list of AppRoleDto
                 items:
-                  $ref: '../model/app-role/AppRoleDto.yml'
+                  $ref: '../model/app-user/AppUserResp.yml'
         '404':
           description: NOT FOUND
         '400':
           description: BAD REQUEST
     post:
       tags:
-        - AppRole
+        - AppUser
         - create
         - save
         - Posts
-      summary: Create an AppRole
-      operationId: createAppRole
+      summary: Create an AppUser
+      operationId: createAppUSer
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '../model/app-role/AppRoleDto.yml'
+              $ref: '../model/app-user/AppUserRequest.yml'
             example:
-              nom: Gerant
+              prenom: Youssoupha
+              nom: Faye
+              email: youssoupha@groupeisi.com
+              motDepasse: P@sser1234
+              etat: 0
+              appRoleIds: [1,3]
       responses:
         '200':
           description: SUCCESS
@@ -56,30 +59,27 @@ paths:
               schema:
                 type: array  # Return a list of AppRoleDto
                 items:
-                  $ref: '../model/app-role/AppRoleDto.yml'
-        '404':
-          description: NOT FOUND
+                  $ref: '../model/app-user/AppUserResp.yml'
         '400':
           description: BAD REQUEST
-  /role-reference:
+  /user-reference:
     get:
       tags:
-        - AppByNom
-        - RoleByNom
-        - findRole
+        - AppUserByID
+        - findUser
         - Gets
-      summary: find One By his name
-      operationId: getAppRoleByName
+      summary: find One By id
+      operationId: getAppUserById
       responses:
         200:
           description: SUCCESS
           content:
             'application/json':
               schema:
-                $ref: '../model/app-role/AppRoleDto.yml'
+                $ref: '../model/app-user/AppUserResp.yml'
     put:
       tags:
-        - AppRole
+        - AppUser
         - Puts
       summary: Update an AppRole
       operationId: updateRole
@@ -87,10 +87,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '../model/app-role/AppRoleDto.yml'
+              $ref: '../model/app-user/AppUserRequest.yml'
       responses:
         '200':
           description: SUCCESS
+          content:
+            application/json:
+              schema:
+                type: array  # Return a list of AppRoleDto
+                items:
+                  $ref: '../model/app-user/AppUserResp.yml'
         '404':
           description: NOT FOUND
         '400':
@@ -102,6 +108,8 @@ paths:
       summary: Delete an AppRole
       operationId: deleteRole
       responses:
+        '200':
+          description: SUCCESS
         '204':
           description: No Content
         '404':

@@ -26,3 +26,7 @@ paths:
     $ref: '../components/api/app-role.yml#/paths/~1role'
   /role/{nom}:
     $ref: '../components/api/app-role.yml#/paths/~1role-reference'
+  /user:
+    $ref: '../components/api/app-user.yml#/paths/~1user'
+  /user/{id}:
+    $ref: '../components/api/app-user.yml#/paths/~1user-reference'
