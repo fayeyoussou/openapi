@@ -1,0 +1,10 @@
+type: object
+properties:
+  id:
+    type: integer
+  libelle:
+    type: string
+  qtStock:
+    type: number
+  appUser:
+    $ref: '../app-user/AppUserResp.yml'  # Assuming the definition for AppUserResp is in AppUserResp.yml

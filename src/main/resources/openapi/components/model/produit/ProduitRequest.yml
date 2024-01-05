@@ -1,0 +1,10 @@
+type: object
+properties:
+  libelle:
+    type: string
+    notNull: true
+  qtStock:
+    type: number
+    minimum: 0
+  appUserId:
+    type: integer

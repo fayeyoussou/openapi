@@ -15,13 +15,19 @@ tags:
     description: User of the Admin App.
   - name: Produit
     description: Produit Cree par les differents user.
+  - name: Posts
+    description: List of post of the api
+  - name: Gets
+    description: List of gets of the api
+  - name: Deletes
+    description: List of deletes of the api
+  - name: Puts
+    description: List of puts of the api
+  - name: WithReferences
+    description: List of api with references
+
 
 paths:
-
-  ##############
-  ## API Client ##
-  ##############
-
   /role:
     $ref: '../components/api/app-role.yml#/paths/~1role'
   /role/{nom}:
@@ -30,3 +36,7 @@ paths:
     $ref: '../components/api/app-user.yml#/paths/~1user'
   /user/{id}:
     $ref: '../components/api/app-user.yml#/paths/~1user-reference'
+  /produit:
+    $ref: '../components/api/produit.yml#/paths/~1produit'
+  /produit/{id}:
+    $ref: '../components/api/produit.yml#/paths/~1produit-reference'

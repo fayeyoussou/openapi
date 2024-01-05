@@ -16,6 +16,7 @@ paths:
     get:
       tags:
         - AppUser
+        - Gets
       summary: Get All AppUsers
       operationId: getUsers
       responses:
@@ -34,8 +35,6 @@ paths:
     post:
       tags:
         - AppUser
-        - create
-        - save
         - Posts
       summary: Create an AppUser
       operationId: createAppUSer
@@ -65,9 +64,9 @@ paths:
   /user-reference:
     get:
       tags:
-        - AppUserByID
-        - findUser
+        - AppUser
         - Gets
+        - WithReferences
       summary: find One By id
       operationId: getAppUserById
       responses:
@@ -81,6 +80,7 @@ paths:
       tags:
         - AppUser
         - Puts
+        - WithReferences
       summary: Update an AppRole
       operationId: updateRole
       requestBody:
@@ -103,8 +103,9 @@ paths:
           description: BAD REQUEST
     delete:
       tags:
-        - AppRole
+        - AppUser
         - Deletes
+        - WithReferences
       summary: Delete an AppRole
       operationId: deleteRole
       responses:
